@@ -1,4 +1,6 @@
 using Microsoft.Data.SqlClient;
+using System.Data;
+
 namespace TabPrinterDetails
 {
     public partial class Form1 : Form
@@ -21,8 +23,9 @@ namespace TabPrinterDetails
             {
                 if (MessageBox.Show("Are You Sure You Want To This User?", "Saving Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    cm = new SqlCommand("INSERT INTO PrinterTabDetails(ID,RepID,FirstName,LastName,EmpNo,Position,DistributorName,Location,IMINo,ASMName,Brand,Category,Remark1) VALUES(@ID,@RepID,@FirstName,@LastName,@EmpNo,@Position,@DistributorName,@Location,@IMINo,@ASMName,@Brand,@Category,@Remark1)", con);
-                    cm.Parameters.AddWithValue("@ID", IDTxt.Text);
+                    cm = new SqlCommand("INSERT INTO PrinterTabDetails(RepID,FirstName,LastName,EmpNo,Position,DistributorName,Location,IMINo,ASMName,Brand,Category,Remark1) VALUES (@RepID,@FirstName,@LastName,@EmpNo,@Position,@DistributorName,@Location,@IMINo,@ASMName,@Brand,@Category,@Remark1)", con);
+
+                    //                   cm.Parameters.AddWithValue("@ID", IDTxt.Text);
                     cm.Parameters.AddWithValue("@RepID", repIDTxt.Text);
                     cm.Parameters.AddWithValue("@FirstName", firstNameTxt.Text);
                     cm.Parameters.AddWithValue("@LastName", lastNameTxt.Text);
@@ -51,6 +54,27 @@ namespace TabPrinterDetails
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            SqlConnection con = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm = new SqlCommand("Select PositionID,Position from Tbl_Position ", con);
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cm;
+            DataTable table = new DataTable();
+            da.Fill(table);
+            DataRow defaultRow = table.NewRow();
+            defaultRow["PositionID"] = 0;
+            defaultRow["Position"] = "Select Position";
+            table.Rows.InsertAt(defaultRow, 0);
+            positionCombo.DataSource = table;
+            positionCombo.DisplayMember = "Position";
+            positionCombo.ValueMember = "PositionID";
+            positionCombo.SelectedIndex = 0;
+
+
+            distributorCombo.Visible = false;
+            label1.Visible = false;
+
+
             brandCombo.Items.Add("Other");
             brandCombo.Items.Add("Lenovo M8");
             brandCombo.Items.Add("W40 Printer");
@@ -59,23 +83,37 @@ namespace TabPrinterDetails
             categoriesCombo.Items.Add("Brand New");
             categoriesCombo.Items.Add("Used");
 
-            positionCombo.Items.Add("Other");
-            positionCombo.Items.Add("MD");
-            positionCombo.Items.Add("GM");
-            positionCombo.Items.Add("ASM");
-            positionCombo.Items.Add("UM");
-            positionCombo.Items.Add("HRM");
-            positionCombo.Items.Add("ITM");
-            positionCombo.Items.Add("Direct");
-            positionCombo.Items.Add("Distributor");
-            positionCombo.Items.Add("Staff");
+            //positionCombo.Items.Add("Other");
+            //positionCombo.Items.Add("MD");
+            //positionCombo.Items.Add("GM");
+            //positionCombo.Items.Add("ASM");
+            //positionCombo.Items.Add("UM");
+            //positionCombo.Items.Add("HRM");
+            //positionCombo.Items.Add("ITM");
+            //positionCombo.Items.Add("Direct");
+            //positionCombo.Items.Add("Distributor");
+            //positionCombo.Items.Add("Staff");
 
             locationCombo.Items.Add("Centrel");
             locationCombo.Items.Add("Down South");
             locationCombo.Items.Add("Kaduwela");
             locationCombo.Items.Add("Head Office");
 
-            distributorCombo.Items.Add("");
+            distributorCombo.Items.Add("A");
+            distributorCombo.Items.Add("B");
+            distributorCombo.Items.Add("C");
+            distributorCombo.Items.Add("D");
+
+            ASMCombo.Items.Add("A");
+            ASMCombo.Items.Add("B");
+            ASMCombo.Items.Add("C");
+            ASMCombo.Items.Add("D");
+
+
+            serielCombo.Items.Add("A");
+            serielCombo.Items.Add("B");
+            serielCombo.Items.Add("C");
+            serielCombo.Items.Add("D");
         }
 
         private void categoriesCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,16 +133,62 @@ namespace TabPrinterDetails
             firstNameTxt.Clear();
             lastNameTxt.Clear();
             empTxt.Clear();
-            positionCombo.Items.Clear();
-            distributorCombo.Items.Clear();
-            locationCombo.Items.Clear();
-            serielCombo.Items.Clear();
-            //           date.ResetText();
-            ASMCombo.Items.Clear();
-            brandCombo.Items.Clear();
-            categoriesCombo.Items.Clear();
+            positionCombo.SelectedIndex = 0;
+            distributorCombo.SelectedIndex = -1;
+            locationCombo.SelectedIndex = -1;
+            serielCombo.SelectedIndex = -1;
+            ASMCombo.SelectedIndex = -1;
+            brandCombo.SelectedIndex = -1;
+            categoriesCombo.SelectedIndex = -1;
             remarkTxt.Clear();
 
+            //positionCombo.Items.Clear();
+            //distributorCombo.Items.Clear();
+            //locationCombo.Items.Clear();
+            //serielCombo.Items.Clear();
+            //date.ResetText();
+            //ASMCombo.Items.Clear();
+            //brandCombo.Items.Clear();
+            //categoriesCombo.Items.Clear();
+
         }
+
+        private void positionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRowView selectedRow = positionCombo.SelectedItem as DataRowView;
+
+            if (selectedRow != null && selectedRow["PositionID"].ToString() == "8")
+            {
+                distributorCombo.Visible = true;
+                label1.Visible = true;
+
+                SqlConnection con = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+                SqlCommand cm = new SqlCommand("Select DistName from Tbl_DistDetails ", con);
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = cm;
+                DataTable table = new DataTable();
+                da.Fill(table);
+                DataRow defaultRow = table.NewRow();
+                defaultRow["DistName"] = "Select Distributor";
+                table.Rows.InsertAt(defaultRow, 0);
+                distributorCombo.DataSource = table;
+                distributorCombo.DisplayMember = "DistName";
+                distributorCombo.SelectedIndex = 0;
+
+
+            }
+            else
+            {
+                distributorCombo.Visible = false;
+                label1.Visible = false;
+            }
+        }
+
+
+
+        //private void positionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if ()
+        //}
     }
 }

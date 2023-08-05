@@ -63,10 +63,10 @@
             Column8 = new DataGridViewTextBoxColumn();
             IDTxt = new TextBox();
             ID = new Label();
-            ASMCombo = new ComboBox();
             ASM = new Label();
             label1 = new Label();
             distributorCombo = new ComboBox();
+            ASMCombo = new ComboBox();
             SuspendLayout();
             // 
             // RepID
@@ -229,6 +229,7 @@
             positionCombo.Name = "positionCombo";
             positionCombo.Size = new Size(193, 23);
             positionCombo.TabIndex = 17;
+            positionCombo.SelectedIndexChanged += positionCombo_SelectedIndexChanged;
             // 
             // locationCombo
             // 
@@ -356,14 +357,6 @@
             ID.TabIndex = 26;
             ID.Text = "ID";
             // 
-            // ASMCombo
-            // 
-            ASMCombo.FormattingEnabled = true;
-            ASMCombo.Location = new Point(266, 333);
-            ASMCombo.Name = "ASMCombo";
-            ASMCombo.Size = new Size(193, 23);
-            ASMCombo.TabIndex = 29;
-            // 
             // ASM
             // 
             ASM.AutoSize = true;
@@ -378,19 +371,27 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(499, 331);
+            label1.Location = new Point(503, 275);
             label1.Name = "label1";
-            label1.Size = new Size(74, 23);
+            label1.Size = new Size(40, 23);
             label1.TabIndex = 30;
-            label1.Text = "Distributor ";
+            label1.Text = "EMP ";
             // 
             // distributorCombo
             // 
             distributorCombo.FormattingEnabled = true;
-            distributorCombo.Location = new Point(603, 331);
+            distributorCombo.Location = new Point(549, 275);
             distributorCombo.Name = "distributorCombo";
-            distributorCombo.Size = new Size(138, 23);
+            distributorCombo.Size = new Size(262, 23);
             distributorCombo.TabIndex = 31;
+            // 
+            // ASMCombo
+            // 
+            ASMCombo.FormattingEnabled = true;
+            ASMCombo.Location = new Point(266, 333);
+            ASMCombo.Name = "ASMCombo";
+            ASMCombo.Size = new Size(193, 23);
+            ASMCombo.TabIndex = 29;
             // 
             // Form1
             // 
@@ -428,6 +429,8 @@
             Controls.Add(EmpNo);
             Controls.Add(FirstName);
             Controls.Add(RepID);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -472,9 +475,9 @@
         private DataGridViewTextBoxColumn Column8;
         private TextBox IDTxt;
         private Label ID;
-        private ComboBox ASMCombo;
         private Label ASM;
         private Label label1;
         private ComboBox distributorCombo;
+        private ComboBox ASMCombo;
     }
 }
