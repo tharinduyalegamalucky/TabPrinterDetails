@@ -34,11 +34,11 @@ namespace TabPrinterDetails
                     cm.Parameters.AddWithValue("@DistributorName", distributorCombo.Text);
                     cm.Parameters.AddWithValue("@Location", locationCombo.Text);
                     cm.Parameters.AddWithValue("@IMINo", serielCombo.Text);
-                    //                   cm.Parameters.AddWithValue("@Date", date);
                     cm.Parameters.AddWithValue("@ASMName", ASMCombo.Text);
                     cm.Parameters.AddWithValue("@Brand", brandCombo.Text);
                     cm.Parameters.AddWithValue("@Category", categoriesCombo.Text);
                     cm.Parameters.AddWithValue("@Remark1", remarkTxt.Text);
+                    //cm.Parameters.AddWithValue("@Date", date);
                     con.Open();
                     cm.ExecuteNonQuery();
                     con.Close();
@@ -75,10 +75,10 @@ namespace TabPrinterDetails
             label1.Visible = false;
 
 
-            brandCombo.Items.Add("Other");
-            brandCombo.Items.Add("Lenovo M8");
-            brandCombo.Items.Add("W40 Printer");
-            brandCombo.Items.Add("Svamsung A");
+            //brandCombo.Items.Add("Other");
+            //brandCombo.Items.Add("Lenovo M8");
+            //brandCombo.Items.Add("W40 Printer");
+            //brandCombo.Items.Add("Svamsung A");
 
             categoriesCombo.Items.Add("Brand New");
             categoriesCombo.Items.Add("Used");
@@ -141,6 +141,7 @@ namespace TabPrinterDetails
             brandCombo.SelectedIndex = -1;
             categoriesCombo.SelectedIndex = -1;
             remarkTxt.Clear();
+            date.ResetText();
 
             //positionCombo.Items.Clear();
             //distributorCombo.Items.Clear();
@@ -182,6 +183,31 @@ namespace TabPrinterDetails
                 distributorCombo.Visible = false;
                 label1.Visible = false;
             }
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void brandCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+            SqlConnection con = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm = new SqlCommand("Select Brand, BrandID from TP_Headers", con);
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cm;
+            DataTable table = new DataTable();
+            da.Fill(table);
+            DataRow defaultRow = table.NewRow();
+            defaultRow["Brand"] = "Select Brand"; 
+            table.Rows.InsertAt(defaultRow, 0);
+            brandCombo.DataSource = table;
+            brandCombo.DisplayMember = "Brand";
+            brandCombo.ValueMember = "BrandID";
+            brandCombo.SelectedIndex = 0;
+
         }
 
 

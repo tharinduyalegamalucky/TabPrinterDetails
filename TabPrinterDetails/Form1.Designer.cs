@@ -51,7 +51,7 @@
             remarkTxt = new TextBox();
             SaveBtn = new Button();
             clearBtn = new Button();
-            deleteBtn = new Button();
+            closeBtn = new Button();
             date = new DateTimePicker();
             Column = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -212,6 +212,7 @@
             brandCombo.Name = "brandCombo";
             brandCombo.Size = new Size(193, 23);
             brandCombo.TabIndex = 15;
+            brandCombo.SelectedIndexChanged += brandCombo_SelectedIndexChanged;
             // 
             // categoriesCombo
             // 
@@ -281,17 +282,18 @@
             clearBtn.UseVisualStyleBackColor = false;
             clearBtn.Click += clearBtn_Click;
             // 
-            // deleteBtn
+            // closeBtn
             // 
-            deleteBtn.BackColor = SystemColors.Highlight;
-            deleteBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteBtn.ForeColor = SystemColors.ButtonFace;
-            deleteBtn.Location = new Point(452, 631);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(75, 31);
-            deleteBtn.TabIndex = 23;
-            deleteBtn.Text = "DELETE";
-            deleteBtn.UseVisualStyleBackColor = false;
+            closeBtn.BackColor = SystemColors.Highlight;
+            closeBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            closeBtn.ForeColor = SystemColors.ButtonFace;
+            closeBtn.Location = new Point(452, 631);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(75, 31);
+            closeBtn.TabIndex = 23;
+            closeBtn.Text = "CLOSE";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
             // 
             // date
             // 
@@ -405,7 +407,7 @@
             Controls.Add(ASM);
             Controls.Add(ID);
             Controls.Add(date);
-            Controls.Add(deleteBtn);
+            Controls.Add(closeBtn);
             Controls.Add(clearBtn);
             Controls.Add(SaveBtn);
             Controls.Add(remarkTxt);
@@ -463,7 +465,7 @@
         private TextBox remarkTxt;
         private Button SaveBtn;
         private Button clearBtn;
-        private Button deleteBtn;
+        private Button closeBtn;
         private DateTimePicker date;
         private DataGridViewTextBoxColumn Column;
         private DataGridViewTextBoxColumn Column2;
