@@ -71,10 +71,27 @@ namespace TabPrinterDetails
             positionCombo.SelectedIndex = 0;
 
 
-
-
             distributorCombo.Visible = false;
             label1.Visible = false;
+
+
+
+
+
+            SqlConnection con1 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm1 = new SqlCommand("Select BrandID ,Brand from TP_Headers", con1);
+            SqlDataAdapter da1 = new SqlDataAdapter();
+            da1.SelectCommand = cm1;
+            DataTable table1 = new DataTable();
+            da1.Fill(table1);
+            DataRow defaultRow1 = table1.NewRow();
+            defaultRow1["Brand"] = "Select Brand";
+            table1.Rows.InsertAt(defaultRow1, 0);
+            brandCombo.DataSource = table1;
+            brandCombo.DisplayMember = "Brand";
+            brandCombo.ValueMember = "BrandID";
+            brandCombo.SelectedIndex = 0;
+            brandCombo.SelectedIndex = 0;
 
 
             //brandCombo.Items.Add("Other");
@@ -194,52 +211,6 @@ namespace TabPrinterDetails
 
         private void brandCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //SqlConnection con = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
-            //SqlCommand cm = new SqlCommand("Select Brand from TP_Headers", con);
-            //SqlDataAdapter da = new SqlDataAdapter();
-            //da.SelectCommand = cm;
-            //DataTable table = new DataTable();
-            //da.Fill(table);
-            //DataRow defaultRow = table.NewRow();
-            //defaultRow["Brand"] = "Select Brand";
-            //table.Rows.InsertAt(defaultRow, 0);
-            //brandCombo.DataSource = table;
-            //brandCombo.SelectedIndex = 0;
-
-
-
-
-            DataRowView selectedRow = brandCombo.SelectedItem as DataRowView;
-
-            if (selectedRow != null && selectedRow["PositionID"].ToString() == "8")
-            {
-                distributorCombo.Visible = true;
-                label1.Visible = true;
-
-                SqlConnection con = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
-                SqlCommand cm = new SqlCommand("Select DistName from Tbl_DistDetails ", con);
-                SqlDataAdapter da = new SqlDataAdapter();
-                da.SelectCommand = cm;
-                DataTable table = new DataTable();
-                da.Fill(table);
-                DataRow defaultRow = table.NewRow();
-                defaultRow["DistName"] = "Select Distributor";
-                table.Rows.InsertAt(defaultRow, 0);
-                brandCombo.DataSource = table;
-                brandCombo.DisplayMember = "DistName";
-                brandCombo.SelectedIndex = 0;
-
-
-            }
-            else
-            {
-                distributorCombo.Visible = false;
-                label1.Visible = false;
-            }
-
-
-
 
 
         }
