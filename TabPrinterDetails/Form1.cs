@@ -98,64 +98,64 @@ namespace TabPrinterDetails
 
 
 
-            SqlConnection con2 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
-            SqlCommand cm2 = new SqlCommand("SELECT TD.IMIE_NO1 FROM dbo.TP_Details TD INNER JOIN dbo.TP_Headers TH ON TH.BrandID = TD.TP_ID WHERE TH.BrandID = '2' AND TD.Active=0", con2);
-            SqlDataAdapter da2 = new SqlDataAdapter();
-            da2.SelectCommand = cm2;
-            DataTable table2 = new DataTable();
-            da2.Fill(table2);
 
-            // Create a default row using the same data type as IMIE_NO1 column
-            DataRow defaultRow2 = table2.NewRow();
-            defaultRow2["IMIE_NO1"] = 0; // Use an appropriate default value
-            table2.Rows.InsertAt(defaultRow2, 0);
-
-            serielCombo.DataSource = table2;
-            serielCombo.DisplayMember = "IMIE_NO1";
-            serielCombo.ValueMember = "IMIE_NO1"; // Since you're using IMIE_NO1 as both DisplayMember and ValueMember
-            serielCombo.SelectedIndex = 0;
+            SqlConnection con3 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm3 = new SqlCommand("SELECT Name, ASM_ID FROM ASM", con3);
+            SqlDataAdapter da3 = new SqlDataAdapter();
+            da3.SelectCommand = cm3;
+            DataTable table3 = new DataTable();
+            da3.Fill(table3);
+            DataRow defaultRow3 = table3.NewRow();
+            defaultRow3["Name"] = "Select ";
+            table3.Rows.InsertAt(defaultRow3, 0);
+            ASMCombo.DataSource = table3;
+            ASMCombo.DisplayMember = "Name";
+            ASMCombo.ValueMember = "ASM_ID";
+            ASMCombo.SelectedIndex = 0;
 
 
 
-            //brandCombo.Items.Add("Other");
-            //brandCombo.Items.Add("Lenovo M8");
-            //brandCombo.Items.Add("W40 Printer");
-            //brandCombo.Items.Add("Svamsung A");
+
+            SqlConnection con4 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm4 = new SqlCommand("SELECT Location_ID, Location_Name FROM Location", con4);
+            SqlDataAdapter da4 = new SqlDataAdapter();
+            da4.SelectCommand = cm4;
+            DataTable table4 = new DataTable();
+            da4.Fill(table4);
+            DataRow defaultRow4 = table4.NewRow();
+            defaultRow4["Location_Name"] = "Select Location";
+            table4.Rows.InsertAt(defaultRow4, 0);
+            locationCombo.DataSource = table4;
+            locationCombo.DisplayMember = "Location_Name";
+            locationCombo.ValueMember = "Location_ID";
+            locationCombo.SelectedIndex = 0;
+
+
+
+
+
+          
 
             categoriesCombo.Items.Add("Brand New");
             categoriesCombo.Items.Add("Used");
 
-            //positionCombo.Items.Add("Other");
-            //positionCombo.Items.Add("MD");
-            //positionCombo.Items.Add("GM");
-            //positionCombo.Items.Add("ASM");
-            //positionCombo.Items.Add("UM");
-            //positionCombo.Items.Add("HRM");
-            //positionCombo.Items.Add("ITM");
-            //positionCombo.Items.Add("Direct");
-            //positionCombo.Items.Add("Distributor");
-            //positionCombo.Items.Add("Staff");
 
-            locationCombo.Items.Add("Centrel");
-            locationCombo.Items.Add("Down South");
-            locationCombo.Items.Add("Kaduwela");
-            locationCombo.Items.Add("Head Office");
+            //locationCombo.Items.Add("Centrel");
+            //locationCombo.Items.Add("Down South");
+            //locationCombo.Items.Add("Kaduwela");
+            //locationCombo.Items.Add("Head Office");
 
             distributorCombo.Items.Add("A");
             distributorCombo.Items.Add("B");
             distributorCombo.Items.Add("C");
             distributorCombo.Items.Add("D");
 
-            ASMCombo.Items.Add("A");
-            ASMCombo.Items.Add("B");
-            ASMCombo.Items.Add("C");
-            ASMCombo.Items.Add("D");
+            //ASMCombo.Items.Add("A");
+            //ASMCombo.Items.Add("B");
+            //ASMCombo.Items.Add("C");
+            //ASMCombo.Items.Add("D");
 
 
-            //serielCombo.Items.Add("A");
-            //serielCombo.Items.Add("B");
-            //serielCombo.Items.Add("C");
-            //serielCombo.Items.Add("D");
         }
 
         private void categoriesCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,14 +185,7 @@ namespace TabPrinterDetails
             remarkTxt.Clear();
             date.ResetText();
 
-            //positionCombo.Items.Clear();
-            //distributorCombo.Items.Clear();
-            //locationCombo.Items.Clear();
-            //serielCombo.Items.Clear();
-            //date.ResetText();
-            //ASMCombo.Items.Clear();
-            //brandCombo.Items.Clear();
-            //categoriesCombo.Items.Clear();
+           
 
         }
 
@@ -234,7 +227,22 @@ namespace TabPrinterDetails
 
         private void brandCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SqlConnection con2 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm2 = new SqlCommand("SELECT TD.IMIE_NO1 FROM dbo.TP_Details TD INNER JOIN dbo.TP_Headers TH ON TH.BrandID = TD.TP_ID WHERE TH.BrandID = '" + brandCombo.SelectedIndex + "' AND TD.Active=0", con2);
+            SqlDataAdapter da2 = new SqlDataAdapter();
+            da2.SelectCommand = cm2;
+            DataTable table2 = new DataTable();
+            da2.Fill(table2);
 
+            // Create a default row using the same data type as IMIE_NO1 column
+            DataRow defaultRow2 = table2.NewRow();
+            defaultRow2["IMIE_NO1"] = 0;
+            table2.Rows.InsertAt(defaultRow2, 0);
+
+            serielCombo.DataSource = table2;
+            serielCombo.DisplayMember = "IMIE_NO1";
+            serielCombo.ValueMember = "IMIE_NO1";
+            serielCombo.SelectedIndex = 0;
 
         }
 
