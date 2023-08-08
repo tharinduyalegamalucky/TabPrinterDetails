@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace TabPrinterDetails
 {
@@ -91,7 +92,29 @@ namespace TabPrinterDetails
             brandCombo.DisplayMember = "Brand";
             brandCombo.ValueMember = "BrandID";
             brandCombo.SelectedIndex = 0;
-            brandCombo.SelectedIndex = 0;
+
+
+
+
+
+
+            SqlConnection con2 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm2 = new SqlCommand("SELECT TD.IMIE_NO1 FROM dbo.TP_Details TD INNER JOIN dbo.TP_Headers TH ON TH.BrandID = TD.TP_ID WHERE TH.BrandID = '2' AND TD.Active=0", con2);
+            SqlDataAdapter da2 = new SqlDataAdapter();
+            da2.SelectCommand = cm2;
+            DataTable table2 = new DataTable();
+            da2.Fill(table2);
+
+            // Create a default row using the same data type as IMIE_NO1 column
+            DataRow defaultRow2 = table2.NewRow();
+            defaultRow2["IMIE_NO1"] = 0; // Use an appropriate default value
+            table2.Rows.InsertAt(defaultRow2, 0);
+
+            serielCombo.DataSource = table2;
+            serielCombo.DisplayMember = "IMIE_NO1";
+            serielCombo.ValueMember = "IMIE_NO1"; // Since you're using IMIE_NO1 as both DisplayMember and ValueMember
+            serielCombo.SelectedIndex = 0;
+
 
 
             //brandCombo.Items.Add("Other");
@@ -129,10 +152,10 @@ namespace TabPrinterDetails
             ASMCombo.Items.Add("D");
 
 
-            serielCombo.Items.Add("A");
-            serielCombo.Items.Add("B");
-            serielCombo.Items.Add("C");
-            serielCombo.Items.Add("D");
+            //serielCombo.Items.Add("A");
+            //serielCombo.Items.Add("B");
+            //serielCombo.Items.Add("C");
+            //serielCombo.Items.Add("D");
         }
 
         private void categoriesCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,7 +238,8 @@ namespace TabPrinterDetails
 
         }
 
-
-
+        private void serielCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

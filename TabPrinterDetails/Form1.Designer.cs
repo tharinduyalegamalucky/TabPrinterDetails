@@ -93,7 +93,7 @@
             // 
             EmpNo.AutoSize = true;
             EmpNo.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            EmpNo.Location = new Point(581, 82);
+            EmpNo.Location = new Point(603, 82);
             EmpNo.Name = "EmpNo";
             EmpNo.Size = new Size(54, 23);
             EmpNo.TabIndex = 2;
@@ -200,7 +200,7 @@
             // 
             // empTxt
             // 
-            empTxt.Location = new Point(668, 82);
+            empTxt.Location = new Point(678, 82);
             empTxt.Name = "empTxt";
             empTxt.Size = new Size(73, 23);
             empTxt.TabIndex = 14;
@@ -245,8 +245,9 @@
             serielCombo.FormattingEnabled = true;
             serielCombo.Location = new Point(603, 229);
             serielCombo.Name = "serielCombo";
-            serielCombo.Size = new Size(138, 23);
+            serielCombo.Size = new Size(208, 23);
             serielCombo.TabIndex = 19;
+            serielCombo.SelectedIndexChanged += serielCombo_SelectedIndexChanged;
             // 
             // remarkTxt
             // 
