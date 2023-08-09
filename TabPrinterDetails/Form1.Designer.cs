@@ -172,9 +172,9 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.AppWorkspace;
-            panel1.Location = new Point(3, 1);
+            panel1.Location = new Point(2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1599, 56);
+            panel1.Size = new Size(842, 56);
             panel1.TabIndex = 10;
             // 
             // repIDTxt
@@ -349,6 +349,7 @@
             IDTxt.Name = "IDTxt";
             IDTxt.Size = new Size(73, 23);
             IDTxt.TabIndex = 27;
+            IDTxt.Visible = false;
             // 
             // ID
             // 
@@ -435,6 +436,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);

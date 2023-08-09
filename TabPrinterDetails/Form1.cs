@@ -134,26 +134,30 @@ namespace TabPrinterDetails
 
 
 
-          
 
-            categoriesCombo.Items.Add("Brand New");
-            categoriesCombo.Items.Add("Used");
+            SqlConnection con5 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm5 = new SqlCommand("SELECT ID, Categories FROM Categories", con5);
+            SqlDataAdapter da5 = new SqlDataAdapter();
+            da5.SelectCommand = cm5;
+            DataTable table5 = new DataTable();
+            da5.Fill(table5);
+            DataRow defaultRow5 = table5.NewRow();
+            defaultRow5["Categories"] = "Select Categories";
+            table5.Rows.InsertAt(defaultRow5, 0);
+            categoriesCombo.DataSource = table5;
+            categoriesCombo.DisplayMember = "Categories";
+            categoriesCombo.ValueMember = "ID";
+            categoriesCombo.SelectedIndex = 0;
 
 
-            //locationCombo.Items.Add("Centrel");
-            //locationCombo.Items.Add("Down South");
-            //locationCombo.Items.Add("Kaduwela");
-            //locationCombo.Items.Add("Head Office");
 
-            distributorCombo.Items.Add("A");
-            distributorCombo.Items.Add("B");
-            distributorCombo.Items.Add("C");
-            distributorCombo.Items.Add("D");
 
-            //ASMCombo.Items.Add("A");
-            //ASMCombo.Items.Add("B");
-            //ASMCombo.Items.Add("C");
-            //ASMCombo.Items.Add("D");
+
+            //categoriesCombo.Items.Add("Brand New");
+            //categoriesCombo.Items.Add("Used");
+
+
+
 
 
         }
@@ -185,7 +189,7 @@ namespace TabPrinterDetails
             remarkTxt.Clear();
             date.ResetText();
 
-           
+
 
         }
 

@@ -20,7 +20,7 @@ namespace TabPrinterDetails
         public TabDetailsForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -28,8 +28,30 @@ namespace TabPrinterDetails
             cm = new SqlCommand("SELECT * FROM PrinterTabDetails", con);
             con.Open();
             dr = cm.ExecuteReader();
-            while (dr.Read()) { 
+            while (dr.Read())
+            {
             }
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Text == "New User") //"New User"
+                                           //treeView1.SelectedNode.Text
+            {
+                var myForm = new Form1();
+                myForm.MdiParent = this;
+                myForm.WindowState = FormWindowState.Maximized;
+                myForm.Show();
+            }
+            else if (e.Node.Text == "Tab & Printers Repairing") //"New User"
+                                                                //treeView1.SelectedNode.Text
+            {
+                var myForm = new Form1();
+                myForm.MdiParent = this;
+                myForm.WindowState = FormWindowState.Maximized;
+                myForm.Show();
+            }
+
         }
     }
 }
