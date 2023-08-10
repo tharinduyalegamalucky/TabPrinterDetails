@@ -46,7 +46,15 @@ namespace TabPrinterDetails
             else if (e.Node.Text == "Tab & Printers Repairing") //"New User"
                                                                 //treeView1.SelectedNode.Text
             {
-                var myForm = new Form1();
+                var myForm = new TPRepairing();
+                myForm.MdiParent = this;
+                myForm.WindowState = FormWindowState.Maximized;
+                myForm.Show();
+            }
+            else if (e.Node.Text == "Finished Repairing")
+
+            {
+                var myForm = new FinishedRepairing();
                 myForm.MdiParent = this;
                 myForm.WindowState = FormWindowState.Maximized;
                 myForm.Show();

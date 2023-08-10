@@ -174,7 +174,7 @@ namespace TabPrinterDetails
 
         public void Clear()
         {
-            IDTxt.Clear();
+            //IDTxt.Clear();
             repIDTxt.Clear();
             firstNameTxt.Clear();
             lastNameTxt.Clear();
@@ -252,6 +252,11 @@ namespace TabPrinterDetails
 
         private void serielCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void RepID_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

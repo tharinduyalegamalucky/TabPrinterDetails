@@ -107,22 +107,23 @@
             panel1.BackgroundImageLayout = ImageLayout.Center;
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Enabled = false;
-            panel1.Location = new Point(1, 0);
+            panel1.Location = new Point(1, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1266, 60);
+            panel1.Size = new Size(1673, 57);
             panel1.TabIndex = 0;
             // 
             // TabDetailsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1267, 786);
+            ClientSize = new Size(1550, 824);
             Controls.Add(treeView1);
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "TabDetailsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TabDetailsForm";
+            TopMost = true;
             ResumeLayout(false);
         }
 
