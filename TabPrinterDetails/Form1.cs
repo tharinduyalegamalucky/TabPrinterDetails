@@ -2,6 +2,7 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
+
 namespace TabPrinterDetails
 {
     public partial class Form1 : Form
@@ -11,6 +12,8 @@ namespace TabPrinterDetails
         public Form1()
         {
             InitializeComponent();
+
+            TabPrinterDetails.DB dBC = new TabPrinterDetails.DB();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -231,8 +234,8 @@ namespace TabPrinterDetails
 
         private void brandCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con2 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
-            SqlCommand cm2 = new SqlCommand("SELECT TD.IMIE_NO1 FROM dbo.TP_Details TD INNER JOIN dbo.TP_Headers TH ON TH.BrandID = TD.TP_ID WHERE TH.BrandID = '" + brandCombo.SelectedIndex + "' AND TD.Active=0", con2);
+            //SqlConnection con2 = new SqlConnection(@"Data Source = SD1\SQLEXPRESS; Initial Catalog = PrinterTab; User ID = sa; Password=123");
+            SqlCommand cm2 = new SqlCommand("SELECT TD.IMIE_NO1 FROM dbo.TP_Details TD INNER JOIN dbo.TP_Headers TH ON TH.BrandID = TD.TP_ID WHERE TH.BrandID = '" + brandCombo.SelectedIndex + "' AND TD.Active=0", DB.getDBConn());
             SqlDataAdapter da2 = new SqlDataAdapter();
             da2.SelectCommand = cm2;
             DataTable table2 = new DataTable();
@@ -257,6 +260,11 @@ namespace TabPrinterDetails
         private void RepID_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

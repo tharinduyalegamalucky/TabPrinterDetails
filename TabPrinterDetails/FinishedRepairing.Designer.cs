@@ -139,6 +139,7 @@
             btnSave.TabIndex = 28;
             btnSave.Text = "SAVE";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // dgv1
             // 

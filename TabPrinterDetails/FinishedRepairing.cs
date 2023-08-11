@@ -44,5 +44,32 @@ namespace TabPrinterDetails
             cmbBrand.ValueMember = "BrandID";
             cmbBrand.SelectedIndex = 0;
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Are You Sure You Want To This User?", "Saving Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cm = new SqlCommand("INSERT INTO TP_Repairing_Details(Srid,EmpNo,First_Name,Last_Name,Brand,EMEI_No,Position,Location,Asm,Distributor,Remarks) VALUES (@Srid,@EmpNo,@First_Name,@Last_Name,@Brand,@EMEI_No,@Position,@Location,@Asm,@Distributor,@Remarks)", con);
+
+
+                    cm.Parameters.AddWithValue("@Brand", cmbBrand.Text);
+                    cm.Parameters.AddWithValue("@Date", dateTimePicker1);
+                    cm.Parameters.AddWithValue("@Result", txtResult.Text);
+                    cm.Parameters.AddWithValue("@Remarks", txtRemark.Text);
+
+                    con.Open();
+                    cm.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("User has been successfully saved");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

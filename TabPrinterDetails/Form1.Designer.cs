@@ -29,28 +29,34 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            distributorCombo = new ComboBox();
             label1 = new Label();
+            ASMCombo = new ComboBox();
             ASM = new Label();
-            Remark = new Label();
-            SerialNo = new Label();
-            Location = new Label();
-            Position = new Label();
-            Categories = new Label();
-            Brand = new Label();
-            LastName = new Label();
-            FirstName = new Label();
-            firstNameTxt = new TextBox();
-            lastNameTxt = new TextBox();
-            brandCombo = new ComboBox();
-            categoriesCombo = new ComboBox();
-            positionCombo = new ComboBox();
-            locationCombo = new ComboBox();
-            serielCombo = new ComboBox();
-            remarkTxt = new TextBox();
-            SaveBtn = new Button();
-            clearBtn = new Button();
-            closeBtn = new Button();
             date = new DateTimePicker();
+            Remark = new Label();
+            closeBtn = new Button();
+            SerialNo = new Label();
+            clearBtn = new Button();
+            Location = new Label();
+            SaveBtn = new Button();
+            Position = new Label();
+            remarkTxt = new TextBox();
+            Categories = new Label();
+            serielCombo = new ComboBox();
+            Brand = new Label();
+            locationCombo = new ComboBox();
+            LastName = new Label();
+            positionCombo = new ComboBox();
+            EmpNo = new Label();
+            categoriesCombo = new ComboBox();
+            FirstName = new Label();
+            brandCombo = new ComboBox();
+            RepID = new Label();
+            lastNameTxt = new TextBox();
+            empTxt = new TextBox();
+            firstNameTxt = new TextBox();
+            repIDTxt = new TextBox();
             Column = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -59,18 +65,14 @@
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
-            distributorCombo = new ComboBox();
-            ASMCombo = new ComboBox();
-            repIDTxt = new TextBox();
-            empTxt = new TextBox();
-            EmpNo = new Label();
-            RepID = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonFace;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(distributorCombo);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(ASMCombo);
@@ -104,6 +106,14 @@
             panel1.Size = new Size(806, 570);
             panel1.TabIndex = 10;
             // 
+            // distributorCombo
+            // 
+            distributorCombo.FormattingEnabled = true;
+            distributorCombo.Location = new Point(488, 163);
+            distributorCombo.Name = "distributorCombo";
+            distributorCombo.Size = new Size(262, 23);
+            distributorCombo.TabIndex = 31;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -113,6 +123,14 @@
             label1.Size = new Size(40, 23);
             label1.TabIndex = 43;
             label1.Text = "EMP ";
+            // 
+            // ASMCombo
+            // 
+            ASMCombo.FormattingEnabled = true;
+            ASMCombo.Location = new Point(488, 257);
+            ASMCombo.Name = "ASMCombo";
+            ASMCombo.Size = new Size(193, 23);
+            ASMCombo.TabIndex = 29;
             // 
             // ASM
             // 
@@ -124,6 +142,13 @@
             ASM.TabIndex = 42;
             ASM.Text = "ASM";
             // 
+            // date
+            // 
+            date.Location = new Point(488, 209);
+            date.Name = "date";
+            date.Size = new Size(209, 23);
+            date.TabIndex = 25;
+            // 
             // Remark
             // 
             Remark.AutoSize = true;
@@ -133,168 +158,6 @@
             Remark.Size = new Size(54, 23);
             Remark.TabIndex = 40;
             Remark.Text = "Remark";
-            // 
-            // SerialNo
-            // 
-            SerialNo.AutoSize = true;
-            SerialNo.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            SerialNo.Location = new Point(392, 117);
-            SerialNo.Name = "SerialNo";
-            SerialNo.Size = new Size(91, 23);
-            SerialNo.TabIndex = 39;
-            SerialNo.Text = "Serial Number";
-            // 
-            // Location
-            // 
-            Location.AutoSize = true;
-            Location.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Location.Location = new Point(392, 308);
-            Location.Name = "Location";
-            Location.Size = new Size(59, 23);
-            Location.TabIndex = 38;
-            Location.Text = "Location";
-            // 
-            // Position
-            // 
-            Position.AutoSize = true;
-            Position.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Position.Location = new Point(47, 308);
-            Position.Name = "Position";
-            Position.Size = new Size(56, 23);
-            Position.TabIndex = 37;
-            Position.Text = "Position";
-            // 
-            // Categories
-            // 
-            Categories.AutoSize = true;
-            Categories.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Categories.Location = new Point(47, 255);
-            Categories.Name = "Categories";
-            Categories.Size = new Size(72, 23);
-            Categories.TabIndex = 36;
-            Categories.Text = "Categories";
-            // 
-            // Brand
-            // 
-            Brand.AutoSize = true;
-            Brand.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Brand.Location = new Point(47, 209);
-            Brand.Name = "Brand";
-            Brand.Size = new Size(44, 23);
-            Brand.TabIndex = 35;
-            Brand.Text = "Brand";
-            // 
-            // LastName
-            // 
-            LastName.AutoSize = true;
-            LastName.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LastName.Location = new Point(47, 161);
-            LastName.Name = "LastName";
-            LastName.Size = new Size(71, 23);
-            LastName.TabIndex = 34;
-            LastName.Text = "Last Name";
-            // 
-            // FirstName
-            // 
-            FirstName.AutoSize = true;
-            FirstName.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            FirstName.Location = new Point(46, 115);
-            FirstName.Name = "FirstName";
-            FirstName.Size = new Size(72, 23);
-            FirstName.TabIndex = 32;
-            FirstName.Text = "First Name";
-            // 
-            // firstNameTxt
-            // 
-            firstNameTxt.Location = new Point(152, 117);
-            firstNameTxt.Name = "firstNameTxt";
-            firstNameTxt.Size = new Size(202, 23);
-            firstNameTxt.TabIndex = 12;
-            // 
-            // lastNameTxt
-            // 
-            lastNameTxt.Location = new Point(152, 161);
-            lastNameTxt.Name = "lastNameTxt";
-            lastNameTxt.Size = new Size(202, 23);
-            lastNameTxt.TabIndex = 13;
-            // 
-            // brandCombo
-            // 
-            brandCombo.FormattingEnabled = true;
-            brandCombo.Location = new Point(152, 209);
-            brandCombo.Name = "brandCombo";
-            brandCombo.Size = new Size(193, 23);
-            brandCombo.TabIndex = 15;
-            brandCombo.SelectedIndexChanged += brandCombo_SelectedIndexChanged;
-            // 
-            // categoriesCombo
-            // 
-            categoriesCombo.FormattingEnabled = true;
-            categoriesCombo.Location = new Point(152, 257);
-            categoriesCombo.Name = "categoriesCombo";
-            categoriesCombo.Size = new Size(193, 23);
-            categoriesCombo.TabIndex = 16;
-            categoriesCombo.SelectedIndexChanged += categoriesCombo_SelectedIndexChanged;
-            // 
-            // positionCombo
-            // 
-            positionCombo.FormattingEnabled = true;
-            positionCombo.Location = new Point(152, 308);
-            positionCombo.Name = "positionCombo";
-            positionCombo.Size = new Size(193, 23);
-            positionCombo.TabIndex = 17;
-            positionCombo.SelectedIndexChanged += positionCombo_SelectedIndexChanged;
-            // 
-            // locationCombo
-            // 
-            locationCombo.FormattingEnabled = true;
-            locationCombo.Location = new Point(488, 310);
-            locationCombo.Name = "locationCombo";
-            locationCombo.Size = new Size(193, 23);
-            locationCombo.TabIndex = 18;
-            // 
-            // serielCombo
-            // 
-            serielCombo.FormattingEnabled = true;
-            serielCombo.Location = new Point(488, 117);
-            serielCombo.Name = "serielCombo";
-            serielCombo.Size = new Size(208, 23);
-            serielCombo.TabIndex = 19;
-            serielCombo.SelectedIndexChanged += serielCombo_SelectedIndexChanged;
-            // 
-            // remarkTxt
-            // 
-            remarkTxt.Location = new Point(152, 359);
-            remarkTxt.Multiline = true;
-            remarkTxt.Name = "remarkTxt";
-            remarkTxt.Size = new Size(598, 91);
-            remarkTxt.TabIndex = 20;
-            // 
-            // SaveBtn
-            // 
-            SaveBtn.BackColor = SystemColors.Highlight;
-            SaveBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            SaveBtn.ForeColor = SystemColors.ButtonFace;
-            SaveBtn.Location = new Point(675, 507);
-            SaveBtn.Name = "SaveBtn";
-            SaveBtn.Size = new Size(75, 31);
-            SaveBtn.TabIndex = 21;
-            SaveBtn.Text = "SAVE";
-            SaveBtn.UseVisualStyleBackColor = false;
-            SaveBtn.Click += SaveBtn_Click;
-            // 
-            // clearBtn
-            // 
-            clearBtn.BackColor = SystemColors.Highlight;
-            clearBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            clearBtn.ForeColor = SystemColors.ButtonFace;
-            clearBtn.Location = new Point(563, 507);
-            clearBtn.Name = "clearBtn";
-            clearBtn.Size = new Size(75, 31);
-            clearBtn.TabIndex = 22;
-            clearBtn.Text = "CLEAR";
-            clearBtn.UseVisualStyleBackColor = false;
-            clearBtn.Click += clearBtn_Click;
             // 
             // closeBtn
             // 
@@ -309,12 +172,202 @@
             closeBtn.UseVisualStyleBackColor = false;
             closeBtn.Click += closeBtn_Click;
             // 
-            // date
+            // SerialNo
             // 
-            date.Location = new Point(488, 209);
-            date.Name = "date";
-            date.Size = new Size(209, 23);
-            date.TabIndex = 25;
+            SerialNo.AutoSize = true;
+            SerialNo.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            SerialNo.Location = new Point(392, 117);
+            SerialNo.Name = "SerialNo";
+            SerialNo.Size = new Size(91, 23);
+            SerialNo.TabIndex = 39;
+            SerialNo.Text = "Serial Number";
+            // 
+            // clearBtn
+            // 
+            clearBtn.BackColor = SystemColors.Highlight;
+            clearBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            clearBtn.ForeColor = SystemColors.ButtonFace;
+            clearBtn.Location = new Point(563, 507);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(75, 31);
+            clearBtn.TabIndex = 22;
+            clearBtn.Text = "CLEAR";
+            clearBtn.UseVisualStyleBackColor = false;
+            clearBtn.Click += clearBtn_Click;
+            // 
+            // Location
+            // 
+            Location.AutoSize = true;
+            Location.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Location.Location = new Point(392, 308);
+            Location.Name = "Location";
+            Location.Size = new Size(59, 23);
+            Location.TabIndex = 38;
+            Location.Text = "Location";
+            // 
+            // SaveBtn
+            // 
+            SaveBtn.BackColor = SystemColors.Highlight;
+            SaveBtn.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            SaveBtn.ForeColor = SystemColors.ButtonFace;
+            SaveBtn.Location = new Point(675, 507);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.Size = new Size(75, 31);
+            SaveBtn.TabIndex = 21;
+            SaveBtn.Text = "SAVE";
+            SaveBtn.UseVisualStyleBackColor = false;
+            SaveBtn.Click += SaveBtn_Click;
+            // 
+            // Position
+            // 
+            Position.AutoSize = true;
+            Position.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Position.Location = new Point(47, 308);
+            Position.Name = "Position";
+            Position.Size = new Size(56, 23);
+            Position.TabIndex = 37;
+            Position.Text = "Position";
+            // 
+            // remarkTxt
+            // 
+            remarkTxt.Location = new Point(152, 359);
+            remarkTxt.Multiline = true;
+            remarkTxt.Name = "remarkTxt";
+            remarkTxt.Size = new Size(598, 91);
+            remarkTxt.TabIndex = 20;
+            // 
+            // Categories
+            // 
+            Categories.AutoSize = true;
+            Categories.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Categories.Location = new Point(47, 255);
+            Categories.Name = "Categories";
+            Categories.Size = new Size(72, 23);
+            Categories.TabIndex = 36;
+            Categories.Text = "Categories";
+            // 
+            // serielCombo
+            // 
+            serielCombo.FormattingEnabled = true;
+            serielCombo.Location = new Point(488, 117);
+            serielCombo.Name = "serielCombo";
+            serielCombo.Size = new Size(208, 23);
+            serielCombo.TabIndex = 19;
+            serielCombo.SelectedIndexChanged += serielCombo_SelectedIndexChanged;
+            // 
+            // Brand
+            // 
+            Brand.AutoSize = true;
+            Brand.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Brand.Location = new Point(47, 209);
+            Brand.Name = "Brand";
+            Brand.Size = new Size(44, 23);
+            Brand.TabIndex = 35;
+            Brand.Text = "Brand";
+            // 
+            // locationCombo
+            // 
+            locationCombo.FormattingEnabled = true;
+            locationCombo.Location = new Point(488, 310);
+            locationCombo.Name = "locationCombo";
+            locationCombo.Size = new Size(193, 23);
+            locationCombo.TabIndex = 18;
+            // 
+            // LastName
+            // 
+            LastName.AutoSize = true;
+            LastName.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            LastName.Location = new Point(47, 161);
+            LastName.Name = "LastName";
+            LastName.Size = new Size(71, 23);
+            LastName.TabIndex = 34;
+            LastName.Text = "Last Name";
+            // 
+            // positionCombo
+            // 
+            positionCombo.FormattingEnabled = true;
+            positionCombo.Location = new Point(152, 308);
+            positionCombo.Name = "positionCombo";
+            positionCombo.Size = new Size(193, 23);
+            positionCombo.TabIndex = 17;
+            positionCombo.SelectedIndexChanged += positionCombo_SelectedIndexChanged;
+            // 
+            // EmpNo
+            // 
+            EmpNo.AutoSize = true;
+            EmpNo.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            EmpNo.Location = new Point(392, 55);
+            EmpNo.Name = "EmpNo";
+            EmpNo.Size = new Size(54, 23);
+            EmpNo.TabIndex = 33;
+            EmpNo.Text = "Emp No";
+            // 
+            // categoriesCombo
+            // 
+            categoriesCombo.FormattingEnabled = true;
+            categoriesCombo.Location = new Point(152, 257);
+            categoriesCombo.Name = "categoriesCombo";
+            categoriesCombo.Size = new Size(193, 23);
+            categoriesCombo.TabIndex = 16;
+            categoriesCombo.SelectedIndexChanged += categoriesCombo_SelectedIndexChanged;
+            // 
+            // FirstName
+            // 
+            FirstName.AutoSize = true;
+            FirstName.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            FirstName.Location = new Point(46, 115);
+            FirstName.Name = "FirstName";
+            FirstName.Size = new Size(72, 23);
+            FirstName.TabIndex = 32;
+            FirstName.Text = "First Name";
+            // 
+            // brandCombo
+            // 
+            brandCombo.FormattingEnabled = true;
+            brandCombo.Location = new Point(152, 209);
+            brandCombo.Name = "brandCombo";
+            brandCombo.Size = new Size(193, 23);
+            brandCombo.TabIndex = 15;
+            brandCombo.SelectedIndexChanged += brandCombo_SelectedIndexChanged;
+            // 
+            // RepID
+            // 
+            RepID.AutoSize = true;
+            RepID.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            RepID.Location = new Point(47, 55);
+            RepID.Name = "RepID";
+            RepID.Size = new Size(47, 23);
+            RepID.TabIndex = 31;
+            RepID.Text = "Rep ID";
+            RepID.Click += RepID_Click;
+            // 
+            // lastNameTxt
+            // 
+            lastNameTxt.Location = new Point(152, 161);
+            lastNameTxt.Name = "lastNameTxt";
+            lastNameTxt.Size = new Size(202, 23);
+            lastNameTxt.TabIndex = 13;
+            // 
+            // empTxt
+            // 
+            empTxt.Location = new Point(488, 55);
+            empTxt.Name = "empTxt";
+            empTxt.Size = new Size(73, 23);
+            empTxt.TabIndex = 14;
+            // 
+            // firstNameTxt
+            // 
+            firstNameTxt.Location = new Point(152, 117);
+            firstNameTxt.Name = "firstNameTxt";
+            firstNameTxt.Size = new Size(202, 23);
+            firstNameTxt.TabIndex = 12;
+            // 
+            // repIDTxt
+            // 
+            repIDTxt.Location = new Point(152, 55);
+            repIDTxt.Name = "repIDTxt";
+            repIDTxt.Size = new Size(73, 23);
+            repIDTxt.TabIndex = 11;
             // 
             // Column
             // 
@@ -356,56 +409,18 @@
             Column8.HeaderText = "Location";
             Column8.Name = "Column8";
             // 
-            // distributorCombo
+            // button1
             // 
-            distributorCombo.FormattingEnabled = true;
-            distributorCombo.Location = new Point(488, 163);
-            distributorCombo.Name = "distributorCombo";
-            distributorCombo.Size = new Size(262, 23);
-            distributorCombo.TabIndex = 31;
-            // 
-            // ASMCombo
-            // 
-            ASMCombo.FormattingEnabled = true;
-            ASMCombo.Location = new Point(488, 257);
-            ASMCombo.Name = "ASMCombo";
-            ASMCombo.Size = new Size(193, 23);
-            ASMCombo.TabIndex = 29;
-            // 
-            // repIDTxt
-            // 
-            repIDTxt.Location = new Point(152, 55);
-            repIDTxt.Name = "repIDTxt";
-            repIDTxt.Size = new Size(73, 23);
-            repIDTxt.TabIndex = 11;
-            // 
-            // empTxt
-            // 
-            empTxt.Location = new Point(488, 55);
-            empTxt.Name = "empTxt";
-            empTxt.Size = new Size(73, 23);
-            empTxt.TabIndex = 14;
-            // 
-            // EmpNo
-            // 
-            EmpNo.AutoSize = true;
-            EmpNo.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            EmpNo.Location = new Point(392, 55);
-            EmpNo.Name = "EmpNo";
-            EmpNo.Size = new Size(54, 23);
-            EmpNo.TabIndex = 33;
-            EmpNo.Text = "Emp No";
-            // 
-            // RepID
-            // 
-            RepID.AutoSize = true;
-            RepID.Font = new Font("Simplified Arabic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            RepID.Location = new Point(47, 55);
-            RepID.Name = "RepID";
-            RepID.Size = new Size(47, 23);
-            RepID.TabIndex = 31;
-            RepID.Text = "Rep ID";
-            RepID.Click += RepID_Click;
+            button1.BackColor = SystemColors.Highlight;
+            button1.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.Location = new Point(314, 507);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 31);
+            button1.TabIndex = 44;
+            button1.Text = "CLOSE";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
@@ -462,5 +477,6 @@
         private Label RepID;
         private TextBox repIDTxt;
         private TextBox empTxt;
+        private Button button1;
     }
 }
